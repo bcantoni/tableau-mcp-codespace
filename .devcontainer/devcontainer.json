@@ -1,0 +1,25 @@
+{
+  "name": "Tableau MCP with Copilot",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-trixie",
+  "secrets": {
+    "SERVER": {
+      "description": "The URL of the Tableau server.",
+      "documentationUrl": "https://github.com/tableau/tableau-mcp#required-environment-variables"
+    },
+    "SITE_NAME": {
+      "description": "The name of the Tableau site to use. For Tableau Server, set this to an empty string to specify the default site.",
+      "documentationUrl": "https://github.com/tableau/tableau-mcp#required-environment-variables"
+    },
+    "PAT_NAME": {
+      "description": "The name of the Personal Access Token to use.",
+      "documentationUrl": "https://github.com/tableau/tableau-mcp#personal-access-token-configuration"
+    },
+    "PAT_VALUE": {
+      "description": "The value of the Personal Access Token to use.",
+      "documentationUrl": "https://github.com/tableau/tableau-mcp#personal-access-token-configuration"
+    }
+  },
+  "postCreateCommand": "sh .devcontainer/post-create.sh",
+  "onCreateCommand": "echo 'Container created'",
+  "remoteUser": "node"
+}
