@@ -2,19 +2,19 @@
   "name": "Tableau MCP with Copilot",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24-trixie",
   "secrets": {
-    "SERVER": {
+    "TMCP_SERVER": {
       "description": "Tableau server URL (e.g. https://10ax.online.tableau.com or https://tableau.example.com).",
       "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/env-vars"
     },
-    "SITE_NAME": {
+    "TMCP_SITE_NAME": {
       "description": "Tableau site name. For Tableau Server, set this to an empty string to specify the default site.",
       "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/env-vars"
     },
-    "PAT_NAME": {
+    "TMCP_PAT_NAME": {
       "description": "Personal Access Token name.",
       "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/authentication/pat"
     },
-    "PAT_VALUE": {
+    "TMCP_PAT_VALUE": {
       "description": "Personal Access Token value.",
       "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/authentication/pat"
     }
@@ -28,10 +28,10 @@
             "args": ["-y", "@tableau/mcp-server@latest"],
             "env": {
               "TRANSPORT": "stdio",
-              "SERVER": "${localEnv:SERVER}",
-              "SITE_NAME": "${localEnv:SITE_NAME:-}",
-              "PAT_NAME": "${localEnv:PAT_NAME}",
-              "PAT_VALUE": "${localEnv:PAT_VALUE}",
+              "SERVER": "${localEnv:TMCP_SERVER}",
+              "SITE_NAME": "${localEnv:TMCP_SITE_NAME:-}",
+              "PAT_NAME": "${localEnv:TMCP_PAT_NAME}",
+              "PAT_VALUE": "${localEnv:TMCP_PAT_VALUE}",
               "DATASOURCE_CREDENTIALS": "",
               "DEFAULT_LOG_LEVEL": "info",
               "INCLUDE_TOOLS": "",
