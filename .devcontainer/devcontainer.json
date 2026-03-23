@@ -3,20 +3,56 @@
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24-trixie",
   "secrets": {
     "SERVER": {
-      "description": "The URL of the Tableau server.",
-      "documentationUrl": "https://github.com/tableau/tableau-mcp#required-environment-variables"
+      "description": "Tableau server URL (e.g. https://10ax.online.tableau.com or https://tableau.example.com).",
+      "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/env-vars"
     },
     "SITE_NAME": {
-      "description": "The name of the Tableau site to use. For Tableau Server, set this to an empty string to specify the default site.",
-      "documentationUrl": "https://github.com/tableau/tableau-mcp#required-environment-variables"
+      "description": "Tableau site name. For Tableau Server, set this to an empty string to specify the default site.",
+      "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/env-vars"
     },
     "PAT_NAME": {
-      "description": "The name of the Personal Access Token to use.",
-      "documentationUrl": "https://github.com/tableau/tableau-mcp#personal-access-token-configuration"
+      "description": "Personal Access Token name.",
+      "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/authentication/pat"
     },
     "PAT_VALUE": {
-      "description": "The value of the Personal Access Token to use.",
-      "documentationUrl": "https://github.com/tableau/tableau-mcp#personal-access-token-configuration"
+      "description": "Personal Access Token value.",
+      "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/authentication/pat"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "mcp": {
+        "servers": {
+          "tableau": {
+            "command": "npx",
+            "args": ["-y", "@tableau/mcp-server@latest"],
+            "env": {
+              "TRANSPORT": "stdio",
+              "SERVER": "${localEnv:SERVER}",
+              "SITE_NAME": "${localEnv:SITE_NAME:-}",
+              "PAT_NAME": "${localEnv:PAT_NAME}",
+              "PAT_VALUE": "${localEnv:PAT_VALUE}",
+              "DATASOURCE_CREDENTIALS": "",
+              "DEFAULT_LOG_LEVEL": "info",
+              "INCLUDE_TOOLS": "",
+              "EXCLUDE_TOOLS": "",
+              "MAX_RESULT_LIMIT": "",
+              "DISABLE_QUERY_DATASOURCE_FILTER_VALIDATION": ""
+            }
+          }
+        }
+      },
+      "settings": {
+        "ts.preferences.includePackageJsonAutoImports": "on",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "extensions.ignoreRecommendations": true,
+        "mcp.mcpServers.autoStart": true,
+        "mcp.mcpServers.enabledByDefault": true
+      }
     }
   },
   "postCreateCommand": "sh .devcontainer/post-create.sh",
