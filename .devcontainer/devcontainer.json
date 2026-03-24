@@ -19,43 +19,6 @@
       "documentationUrl": "https://tableau.github.io/tableau-mcp/docs/configuration/mcp-config/authentication/pat"
     }
   },
-  "customizations": {
-    "vscode": {
-      "mcp": {
-        "servers": {
-          "tableau": {
-            "command": "npx",
-            "args": ["-y", "@tableau/mcp-server@latest"],
-            "env": {
-              "TRANSPORT": "stdio",
-              "SERVER": "${localEnv:SERVER}",
-              "SITE_NAME": "${localEnv:SITE_NAME:-}",
-              "PAT_NAME": "${localEnv:PAT_NAME}",
-              "PAT_VALUE": "${localEnv:PAT_VALUE}",
-              "DATASOURCE_CREDENTIALS": "",
-              "DEFAULT_LOG_LEVEL": "info",
-              "INCLUDE_TOOLS": "",
-              "EXCLUDE_TOOLS": "",
-              "MAX_RESULT_LIMIT": "",
-              "DISABLE_QUERY_DATASOURCE_FILTER_VALIDATION": ""
-            }
-          }
-        }
-      },
-      "settings": {
-        "ts.preferences.includePackageJsonAutoImports": "on",
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit"
-        },
-        "extensions.ignoreRecommendations": true,
-        "mcp.mcpServers.autoStart": true,
-        "mcp.mcpServers.enabledByDefault": true
-      }
-    }
-  },
   "postCreateCommand": "sh .devcontainer/post-create.sh",
-  "onCreateCommand": "echo 'Container created'",
   "remoteUser": "node"
 }

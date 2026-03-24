@@ -9,11 +9,12 @@ npm install -g @tableau/mcp-server
 # The copilot CLI reads MCP servers from ~/.config/github-copilot/mcp.json
 # Secrets (SERVER, SITE_NAME, PAT_NAME, PAT_VALUE) are injected as env vars
 # by Codespaces and expanded here at container creation time.
-mkdir -p "$HOME/.config/github-copilot"
-cat > "$HOME/.config/github-copilot/mcp.json" << MCPEOF
+mkdir -p "$HOME/.copilot"
+cat > "$HOME/.copilot/mcp-config.json" << MCPEOF
 {
   "mcpServers": {
     "tableau": {
+      "type": "local",
       "command": "npx",
       "args": ["-y", "@tableau/mcp-server@latest"],
       "env": {
